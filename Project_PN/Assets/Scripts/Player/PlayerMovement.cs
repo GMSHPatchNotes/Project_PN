@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     //private Vector3 Dir; //Character Input Value
     #endregion
     [SerializeField] private float MoveSpeed = 0;
+    [SerializeField] private Transform player;
 
     private Vector3 Dir;
 
@@ -31,12 +32,19 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
          
-            Dir.x = Input.GetAxis("Horizontal");
-            Dir.z = Input.GetAxis("Vertical");
+        Dir.x = Input.GetAxis("Horizontal");
+        Dir.z = Input.GetAxis("Vertical");
 
-            Dir.Normalize();
+        Dir.Normalize();
+        
+        if (Dir.x != 0 || Dir.z != 0)
+        {
+            player.transform.localRotation = Quaternion.LookRotation(Dir);
+        }
 
-            transform.position += Dir * MoveSpeed * Time.deltaTime;
+        Debug.Log(Dir);
+
+        transform.position += Dir * MoveSpeed * Time.deltaTime;
         
     }
 
