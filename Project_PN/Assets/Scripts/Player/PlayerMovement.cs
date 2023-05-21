@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     [SerializeField] private float MoveSpeed = 0;
     [SerializeField] private Transform player;
+    [SerializeField] private Animator playerAnim;
 
     private Vector3 Dir;
 
@@ -37,9 +38,14 @@ public class PlayerMovement : MonoBehaviour
 
         Dir.Normalize();
         
-        if (Dir.x != 0 || Dir.z != 0)
+        if (Dir.x != 0 || Dir.z != 0) //플레이어가 움직이고있니?
         {
+            playerAnim.SetBool("isMove", true);
             player.transform.localRotation = Quaternion.LookRotation(Dir);
+        }
+        else
+        {
+            playerAnim.SetBool("isMove", false);
         }
 
         Debug.Log(Dir);

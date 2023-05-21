@@ -644,6 +644,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1914210497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8606755148461151098, guid: bf3896d80b06b09488a4c98cd6d5d851,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107732920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1914210498
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914210497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0308cf4e83cf517488b60af58b290fe0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 22ebc66b4760dc8478c0727bd17964a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2096579536
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,3 +718,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   player: {fileID: 603588664}
+  playerAnim: {fileID: 1914210498}
