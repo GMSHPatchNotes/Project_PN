@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
+        Attack();
     }
 
     void Move()
@@ -52,6 +53,16 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += Dir * MoveSpeed * Time.deltaTime;
         
+    }
+
+    void Attack()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            playerAnim.SetBool("isAttack", true);
+        }
+
+
     }
 
     
