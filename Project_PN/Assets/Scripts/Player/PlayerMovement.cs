@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator playerAnim;
 
     private Vector3 Dir;
+    private Vector3 CurPointPos;
 
     
     
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         Dir.Normalize();
         
-        if (Dir.x != 0 || Dir.z != 0) //플레이어가 움직이고있니?
+        if (Dir.x != 0 || Dir.z != 0) //
         {
             playerAnim.SetBool("isMove", true);
             player.transform.localRotation = Quaternion.LookRotation(Dir);
@@ -49,20 +50,25 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetBool("isMove", false);
         }
 
-        Debug.Log(Dir);
-
         transform.position += Dir * MoveSpeed * Time.deltaTime;
-        
     }
 
     void Attack()
     {
-        if(Input.GetMouseButtonDown(0))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100))
         {
-            playerAnim.SetBool("isAttack", true);
+            CurPointPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                player.transform.LookAt(CurPointPos);
+                playerAnim.SetBool("isAttack", true);
+            }
         }
-
-
     }
 
     
