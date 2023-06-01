@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator playerAnim;
+    [SerializeField] private PlayerMovement player;
 
     void Start()
     {
@@ -13,13 +14,24 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
 
     public void AttackEnd()
     {
+        player.isAttacking = false;
+        player.canMove = true;
         playerAnim.SetBool("isAttack", false);
+    }
+
+    public void SecondsAttackEnd()
+    {
+        player.isAttacking = false;
+        player.canMove = true;
+        player.canComboAttack = false;
+        playerAnim.SetBool("isAttack", false);
+        playerAnim.SetBool("isSecondsAttack", false);
     }
 
 
     //void Update()
     //{
-        
+
     //}
 
 

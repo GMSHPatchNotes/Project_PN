@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor.Build;
 using UnityEditor.Rendering.BuiltIn.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Animator playerAnim;
 
+    const int comboAttackLimit = 4; // player can combo Attack affter first attack
+
+    public bool canMove ; //player can move
+    public bool canComboAttack; // player can comboattack
+    public bool isAttacking;
+
     private Vector3 Dir;
     private Vector3 CurPointPos;
 
@@ -23,37 +30,52 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        
+        canMove = true;
     }
 
     void Update()
     {
         Move();
-        Attack();
+
+        if (!isAttacking)
+        {
+            if (canComboAttack)
+            {
+                AttackSec();
+
+            }
+            else
+            {
+                AttackFir();
+            }
+        }
+        
     }
 
     void Move()
     {
-         
-        Dir.x = Input.GetAxis("Horizontal");
-        Dir.z = Input.GetAxis("Vertical");
+        if (canMove)
+        {
+            Dir.x = Input.GetAxis("Horizontal");
+            Dir.z = Input.GetAxis("Vertical");
 
-        Dir.Normalize();
+            Dir.Normalize();
         
-        if (Dir.x != 0 || Dir.z != 0) //
-        {
-            playerAnim.SetBool("isMove", true);
-            player.transform.localRotation = Quaternion.LookRotation(Dir);
-        }
-        else
-        {
-            playerAnim.SetBool("isMove", false);
-        }
+            if (Dir.x != 0 || Dir.z != 0) //
+            {
+                playerAnim.SetBool("isMove", true);
+                player.transform.localRotation = Quaternion.LookRotation(Dir);
+            }
+            else
+            {
+                playerAnim.SetBool("isMove", false);
+            }
 
-        transform.position += Dir * MoveSpeed * Time.deltaTime;
+            transform.position += Dir * MoveSpeed * Time.deltaTime;
+        }
     }
 
-    void Attack()
+    bool CalCurMousePos()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -62,28 +84,49 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100))
         {
             CurPointPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
+        }
+        return Physics.Raycast(ray, out hit, 100);
+    }
 
+    void AttackFir()
+    {
+        if (CalCurMousePos())
+        {
             if (Input.GetMouseButtonDown(0))
             {
+                isAttacking = true;
+                canMove = false;
+                canComboAttack = true;
+                Invoke("ComboDisable", comboAttackLimit);
                 player.transform.LookAt(CurPointPos);
                 playerAnim.SetBool("isAttack", true);
-            }
+            }   
         }
     }
 
-    
+    void ComboDisable()
+    {
+        if (!isAttacking)
+        {
+            canComboAttack = false;
+        }
+    }
 
-   
-    #region
-    //void Move() //Character Move Control
-    //{
-    //    Dir.x = Input.GetAxis("Horizontal");
-    //    Dir.z = Input.GetAxis("Vertical");
-
-    //    Dir.Normalize();
-
-    //    transform.position += Dir * moveSpeed * Time.deltaTime;
-    //}
-
-    #endregion
+    void AttackSec()
+    {
+        if (CalCurMousePos())
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                isAttacking = true;
+                canMove = false;
+                player.transform.LookAt(CurPointPos);
+                playerAnim.SetBool("isSecondsAttack", true);
+            }
+        }
+    }
 }
+
+
+
+
