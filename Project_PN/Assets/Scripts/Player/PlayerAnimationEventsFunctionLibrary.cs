@@ -6,6 +6,7 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator playerAnim;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private BoxCollider boxCollider;
 
     void Start()
     {
@@ -26,6 +27,18 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
         player.canComboAttack = false;
         playerAnim.SetBool("isAttack", false);
         playerAnim.SetBool("isSecondsAttack", false);
+    }
+   
+    public void attackEnable(int isenable)
+    {
+        if (isenable == 1)
+        {
+            boxCollider.enabled = true;
+        }
+        else
+        {
+            boxCollider.enabled = false;
+        }
     }
 
 
