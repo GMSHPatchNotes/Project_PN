@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
 
     public Animator anim;
 
+    public bool CanMove = true;
+
     enum State
     {
         Idle,
@@ -30,10 +32,12 @@ public class EnemyMovement : MonoBehaviour
         state = State.Idle;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-        agent.destination = target.transform.position;
+        if (target != null)
+        {
+            agent.destination = target.transform.position;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (state == State.Idle)
@@ -43,7 +47,6 @@ public class EnemyMovement : MonoBehaviour
         else if (state == State.Run)
         {
             UpdateRun();
-
         }
         else if (state == State.Attack)
         {
@@ -53,40 +56,48 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAttack()
     {
-        anim.SetBool("isRun", false);
-        anim.SetBool("isAttack", true);
-        agent.speed = 0;
+        agent.SetDestination(transform.position);
         float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > 2)
+        if (distance > 2 && CanMove)
         {
+            Debug.Log("aa");
+            anim.SetBool("isRun", true);
+            anim.SetBool("isAttack", false);
             state = State.Run;
-            anim.SetTrigger("Run");
         }
     }
 
     private void UpdateRun()
     {
-        anim.SetBool("isRun", true);
-        anim.SetBool("isAttack", false);
         float distance = Vector3.Distance(transform.position, target.transform.position);
         if (distance <= 2)
         {
+            anim.SetBool("isAttack", true);
+            anim.SetBool("isRun", false);
             state = State.Attack;
-            anim.SetTrigger("Attack");
         }
-        agent.speed = 3.5f;
-        agent.destination = target.transform.position;
+        else if(distance >= 10)
+        {
+            anim.SetBool("isRun", false);
+            state = State.Idle;
+        }
+        agent.SetDestination(target.transform.position);
     }
 
     private void UpdateIdle()
     {
-        anim.SetBool("isRun", false);
-        anim.SetBool("isAttack", false);
-        agent.speed = 0;
+        agent.SetDestination(transform.position);
         target = GameObject.Find("Player").transform;
-        if (target != null)
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+        if (target != null && distance <= 10)
         {
             state = State.Run;
+            anim.SetBool("isRun", true);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }

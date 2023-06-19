@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator EnemyAnim;
-    [SerializeField] private EnemyMovement animator;
+    [SerializeField] private EnemyMovement Enemy;
 
     
     // Start is called before the first frame update
@@ -17,6 +17,16 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Enemy.CanMove = false;
+    }
+
+    public void attackEnable()
+    {
+        Enemy.CanMove = true;
+    }
+
+    public void AttackEnd()
+    {
+
     }
 }
