@@ -1,0 +1,11 @@
+Begin Object Class=/Script/Engine.Skeleton Name="DemonKing_Skeleton"
+   Begin Object Class=/Script/Engine.SkeletalMeshSocket Name="SkeletalMeshSocket_0"
+   End Object
+   Begin Object Name="SkeletalMeshSocket_0"
+      SocketName="swordSocket"
+      BoneName="demonKing_sword"
+   End Object
+   BoneTree(52)=()
+   Sockets(0)=/Script/Engine.SkeletalMeshSocket'"SkeletalMeshSocket_0"'
+   PreviewSkeletalMesh="/Game/RPGMonsterWave3PBR/Mesh/DemonKing/DemonKing_SK.DemonKing_SK"
+End Object

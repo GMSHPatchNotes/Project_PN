@@ -1,0 +1,11 @@
+Begin Object Class=/Script/Engine.Skeleton Name="NagaWizard_Skeleton"
+   Begin Object Class=/Script/Engine.SkeletalMeshSocket Name="SkeletalMeshSocket_0"
+   End Object
+   Begin Object Name="SkeletalMeshSocket_0"
+      SocketName="staffSocket"
+      BoneName="nagaWizard_staff"
+   End Object
+   BoneTree(65)=()
+   Sockets(0)=/Script/Engine.SkeletalMeshSocket'"SkeletalMeshSocket_0"'
+   PreviewSkeletalMesh="/Game/RPGMonsterWave3PBR/Mesh/NagaWizard/NagaWizard_SK.NagaWizard_SK"
+End Object

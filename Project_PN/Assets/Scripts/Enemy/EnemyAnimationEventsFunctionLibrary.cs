@@ -17,7 +17,7 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Enemy.CanMove = false;
+
     }
 
     public void attackEnable()

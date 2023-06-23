@@ -1,0 +1,11 @@
+Begin Object Class=/Script/Engine.Skeleton Name="Fishman_Skeleton"
+   Begin Object Class=/Script/Engine.SkeletalMeshSocket Name="SkeletalMeshSocket_0"
+   End Object
+   Begin Object Name="SkeletalMeshSocket_0"
+      SocketName="harpponSocket"
+      BoneName="fishman_harppon"
+   End Object
+   BoneTree(64)=()
+   Sockets(0)=/Script/Engine.SkeletalMeshSocket'"SkeletalMeshSocket_0"'
+   PreviewSkeletalMesh="/Game/RPGMonsterWave3PBR/Mesh/Fishman/Fishman_SK.Fishman_SK"
+End Object
