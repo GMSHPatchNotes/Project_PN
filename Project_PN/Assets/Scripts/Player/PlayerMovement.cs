@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed = 0;
     [SerializeField] private Transform player;
     [SerializeField] private Animator playerAnim;
+    [SerializeField] private PlayerAttackControl atkCon;
 
     const int comboAttackLimit = 4; // player can combo Attack affter first attack
 
     public bool canMove ; //player can move
     public bool canComboAttack; // player can comboattack
-    public bool isAttacking;
 
     private Vector3 Dir;
     private Vector3 CurPointPos;
@@ -35,19 +35,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
 
-        if (!isAttacking)
+        AttackClick();
+        
+        if (!atkCon.isAttacking)
         {
-            if (canComboAttack)
-            {
-                AttackSec();
-
-            }
-            else
-            {
-                AttackFir();
-            }
+            Move();
+            //if (canComboAttack)
+            //{
+            //    AttackSec();
+            //}
+            //else
+            //{
+            //    AttackFir();
+            //}
         }
         
     }
@@ -88,43 +89,55 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(ray, out hit, 100);
     }
 
-    void AttackFir()
+    void AttackClick()
     {
-        if (CalCurMousePos())
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (CalCurMousePos())
             {
-                isAttacking = true;
-                canMove = false;
-                canComboAttack = true;
-                Invoke("ComboDisable", comboAttackLimit);
                 player.transform.LookAt(CurPointPos);
-                playerAnim.SetBool("isAttack", true);
-            }   
-        }
-    }
-
-    void ComboDisable()
-    {
-        if (!isAttacking)
-        {
-            canComboAttack = false;
-        }
-    }
-
-    void AttackSec()
-    {
-        if (CalCurMousePos())
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isAttacking = true;
-                canMove = false;
-                player.transform.LookAt(CurPointPos);
-                playerAnim.SetBool("isSecondsAttack", true);
+                atkCon.AttackStart();
             }
         }
     }
+
+    //void AttackFir()
+    //{
+    //    if (CalCurMousePos())
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            isAttacking = true;
+    //            canMove = false;
+    //            canComboAttack = true;
+    //            Invoke("ComboDisable", comboAttackLimit);
+    //            player.transform.LookAt(CurPointPos);
+    //            playerAnim.SetBool("isAttack", true);
+    //        }   
+    //    }
+    //}
+
+    //void ComboDisable()
+    //{
+    //    if (!isAttacking)
+    //    {
+    //        canComboAttack = false;
+    //    }
+    //}
+
+    //void AttackSec()
+    //{
+    //    if (CalCurMousePos())
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            isAttacking = true;
+    //            canMove = false;
+    //            player.transform.LookAt(CurPointPos);
+    //            playerAnim.SetBool("isSecondsAttack", true);
+    //        }
+    //    }
+    //}
 
     
 
