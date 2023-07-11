@@ -23,10 +23,11 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
     public void attackEnable()
     {
         Enemy.CanMove = true;
+        Enemy.isAttacking = true;
     }
 
     public void AttackEnd()
     {
-
+        Enemy.isAttacking = false;
     }
 }

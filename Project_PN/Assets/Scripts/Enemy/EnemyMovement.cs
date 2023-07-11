@@ -17,6 +17,8 @@ public class EnemyMovement : MonoBehaviour
 
     public bool CanMove = true;
 
+    public bool isAttacking;
+
     enum State
     {
         Idle,
@@ -56,14 +58,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAttack()
     {
-        agent.SetDestination(transform.position);
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > 2 && CanMove)
+        if (!isAttacking)
         {
-            Debug.Log("aa");
-            anim.SetBool("isRun", true);
-            anim.SetBool("isAttack", false);
-            state = State.Run;
+            agent.SetDestination(transform.position);
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance > 2 && CanMove)
+            {
+                Debug.Log("aa");
+                anim.SetBool("isRun", true);
+                anim.SetBool("isAttack", false);
+                state = State.Run;
+            }
         }
     }
 

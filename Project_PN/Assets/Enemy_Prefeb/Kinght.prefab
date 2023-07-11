@@ -155,6 +155,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemonKing_SK
       objectReference: {fileID: 0}
+    - target: {fileID: 4991647897562763536, guid: 9e81a1a4322506e45bbbd739a0070afd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 640dc25e9fe46cf469de9346b41b35e9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e81a1a4322506e45bbbd739a0070afd, type: 3}
 --- !u!4 &7330563205431675443 stripped
