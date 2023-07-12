@@ -6,7 +6,6 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator playerAnim;
     [SerializeField] private PlayerMovement player;
-    [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private PlayerAttackControl atkCon;
 
     void Start()
@@ -22,35 +21,22 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
     public void AttackEnd()
     {
         atkCon.AttackEnd();
-        //player.canMove = true;
-        //playerAnim.SetBool("isAttack", false);
     }
 
-    public void SecondsAttackEnd()
+    public void Dash(int Distance)
     {
-        //player.canMove = true;
-        //player.canComboAttack = false;
-        //playerAnim.SetBool("isAttack", false);
-        //playerAnim.SetBool("isSecondsAttack", false);
+        player.Dash(Distance);
     }
-   
-    public void attackEnable(int isenable)
+    public void AttackEnable()
     {
-        //if (isenable == 1)
-        //{
-        //    boxCollider.enabled = true;
-        //}
-        //else
-        //{
-        //    boxCollider.enabled = false;
-        //}
+        atkCon.StartDamage();
     }
 
+    public void AttackDisable()
+    {
+        atkCon.EndDamage();
+    }
 
-    //void Update()
-    //{
-
-    //}
 
 
 

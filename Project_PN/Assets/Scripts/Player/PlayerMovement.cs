@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Animator playerAnim;
     [SerializeField] private PlayerAttackControl atkCon;
+    [SerializeField] private Rigidbody rb;
 
     const int comboAttackLimit = 4; // player can combo Attack affter first attack
 
@@ -41,16 +42,22 @@ public class PlayerMovement : MonoBehaviour
         if (!atkCon.isAttacking)
         {
             Move();
-            //if (canComboAttack)
-            //{
-            //    AttackSec();
-            //}
-            //else
-            //{
-            //    AttackFir();
-            //}
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                atkCon.WeaponSwitch(303);
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                atkCon.WeaponSwitch(403);
+            }
         }
-        
+
+
+    }
+
+    public void Dash(int Distance)
+    {
+        rb.AddForce(player.forward * Distance, ForceMode.Impulse);
     }
 
     void Move()
@@ -101,43 +108,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //void AttackFir()
-    //{
-    //    if (CalCurMousePos())
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            isAttacking = true;
-    //            canMove = false;
-    //            canComboAttack = true;
-    //            Invoke("ComboDisable", comboAttackLimit);
-    //            player.transform.LookAt(CurPointPos);
-    //            playerAnim.SetBool("isAttack", true);
-    //        }   
-    //    }
-    //}
-
-    //void ComboDisable()
-    //{
-    //    if (!isAttacking)
-    //    {
-    //        canComboAttack = false;
-    //    }
-    //}
-
-    //void AttackSec()
-    //{
-    //    if (CalCurMousePos())
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            isAttacking = true;
-    //            canMove = false;
-    //            player.transform.LookAt(CurPointPos);
-    //            playerAnim.SetBool("isSecondsAttack", true);
-    //        }
-    //    }
-    //}
 
     
 

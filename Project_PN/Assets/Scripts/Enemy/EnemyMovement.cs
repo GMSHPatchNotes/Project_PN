@@ -64,12 +64,16 @@ public class EnemyMovement : MonoBehaviour
             float distance = Vector3.Distance(transform.position, target.transform.position);
             if (distance > 2 && CanMove)
             {
-                Debug.Log("aa");
                 anim.SetBool("isRun", true);
                 anim.SetBool("isAttack", false);
                 state = State.Run;
             }
         }
+    }
+
+    public void TakeDamage(int Damage)
+    {
+        Debug.Log(Damage);
     }
 
     private void UpdateRun()
