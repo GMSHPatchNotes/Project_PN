@@ -51,8 +51,6 @@ public class PlayerMovement : MonoBehaviour
                 atkCon.WeaponSwitch(403);
             }
         }
-
-
     }
 
     public void Dash(int Distance)

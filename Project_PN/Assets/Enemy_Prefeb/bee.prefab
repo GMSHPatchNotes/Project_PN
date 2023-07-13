@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6327149316958458010}
   - component: {fileID: 6327149316958458011}
   - component: {fileID: 4565883193362434060}
+  - component: {fileID: 5293954820269445427}
   m_Layer: 0
   m_Name: bee
   m_TagString: Untagged
@@ -87,6 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  rb: {fileID: 0}
+  mat:
+  - {fileID: 0}
+  - {fileID: 0}
+  mesh: {fileID: 5140068617358242260}
   anim: {fileID: 6327149316407817494}
   CanMove: 1
   isAttacking: 0
@@ -104,6 +110,19 @@ CapsuleCollider:
   m_Height: 2.38134
   m_Direction: 1
   m_Center: {x: 0, y: 0.69067, z: 0}
+--- !u!114 &5293954820269445427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327149316958458015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c88a5911734ce34190179114250610b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 6327149316958458011}
 --- !u!1001 &6327149316407817499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,6 +197,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 640dc25e9fe46cf469de9346b41b35e9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbfd96f9f55a21499ee04f62789ff72, type: 3}
+--- !u!137 &5140068617358242260 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1196758944346965199, guid: 7bbfd96f9f55a21499ee04f62789ff72,
+    type: 3}
+  m_PrefabInstance: {fileID: 6327149316407817499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5783806897315025648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7bbfd96f9f55a21499ee04f62789ff72,

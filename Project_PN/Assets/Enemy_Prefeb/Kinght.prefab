@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7075679584963813809}
   - component: {fileID: 7075679584963813810}
   - component: {fileID: 7075679584963813811}
+  - component: {fileID: 1872378796569548957}
   m_Layer: 0
   m_Name: Kinght
   m_TagString: Untagged
@@ -88,6 +89,20 @@ MonoBehaviour:
   target: {fileID: 0}
   anim: {fileID: 7075679584891481565}
   CanMove: 1
+  isAttacking: 0
+--- !u!114 &1872378796569548957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075679584963813820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c88a5911734ce34190179114250610b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 7075679584963813811}
 --- !u!1001 &7075679584891481560
 PrefabInstance:
   m_ObjectHideFlags: 0

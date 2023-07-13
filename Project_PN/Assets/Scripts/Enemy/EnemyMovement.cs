@@ -11,7 +11,13 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
 
+    public Rigidbody rb;
+
     NavMeshAgent agent;
+
+
+    [SerializeField] public Material[] mat = new Material[2];
+    [SerializeField] public SkinnedMeshRenderer mesh;
 
     public Animator anim;
 
@@ -31,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         state = State.Idle;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
@@ -74,6 +81,11 @@ public class EnemyMovement : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         Debug.Log(Damage);
+        //agent.enabled = false;
+        rb.velocity = Vector3.zero;
+        rb.AddForce(transform.forward * -5, ForceMode.Impulse);
+        mesh.material = mat[1];
+        anim.CrossFade("Hit", 0.1f);
     }
 
     private void UpdateRun()

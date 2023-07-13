@@ -50,15 +50,12 @@ public class PlayerAttackControl : MonoBehaviour
         if (!isAttacking)
         {
             MeleeAtackLoop.SetActive(false);
-            canCombo = false;
-            isAttacking = true;
             SelectAttack();
         }
         else if (isAttacking && canCombo)
         {
             MeleeAtackLoop.SetActive(false);
             canCombo = false;
-            isAttacking = true;
             SelectAttack();
         }
     }
@@ -118,13 +115,15 @@ public class PlayerAttackControl : MonoBehaviour
 
     void SelectAttack()
     {
-        switch(state)
+        switch (state)
         {
             case AttackState.Combo01:
+                Debug.Log("aa");
+                if (canCombo == true)
+                {
+                    canCombo = false;
+                }
                 anim.CrossFade("Attack01", 0.1f);
-                canCombo = false;
-                isAttacking = true;
-                anim.SetBool("isAttack", canCombo);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack01", 0.1f);
@@ -132,10 +131,11 @@ public class PlayerAttackControl : MonoBehaviour
                 state = AttackState.Combo02;
                 break;
             case AttackState.Combo02:
+                if (canCombo == true)
+                {
+                    canCombo = false;
+                }
                 anim.CrossFade("Attack02", 0.01f);
-                canCombo = false;
-                isAttacking = true;
-                anim.SetBool("isAttack", canCombo);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack01", 0.01f);
@@ -143,10 +143,11 @@ public class PlayerAttackControl : MonoBehaviour
                 state = AttackState.Combo03;
                 break; 
             case AttackState.Combo03:
+                if (canCombo == true)
+                {
+                    canCombo = false;
+                }
                 anim.CrossFade("Attack03", 0.01f);
-                canCombo = false;
-                isAttacking = true;
-                anim.SetBool("isAttack", canCombo);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack02", 0.01f);

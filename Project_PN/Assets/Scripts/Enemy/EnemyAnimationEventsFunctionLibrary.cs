@@ -20,6 +20,13 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
 
     }
 
+    public void HitEnd()
+    {
+        Enemy.rb.velocity = Vector3.zero;
+        Enemy.mesh.material = Enemy.mat[0];
+    }
+
+
     public void attackEnable()
     {
         Enemy.CanMove = true;
