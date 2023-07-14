@@ -50,11 +50,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 atkCon.WeaponSwitch(403);
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                atkCon.Skill();
+            }
         }
     }
 
     public void Dash(int Distance)
     {
+        rb.velocity = Vector3.zero;
         rb.AddForce(player.forward * Distance, ForceMode.Impulse);
     }
 

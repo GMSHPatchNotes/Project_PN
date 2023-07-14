@@ -60,15 +60,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.49400085
-        functionName: CanCombo
+      - time: 0
+        functionName: StartAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: AttackEnd
+      - time: 0.22031258
+        functionName: AttackEnable
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2635659
+        functionName: PlayAttackSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -81,8 +88,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.22031258
-        functionName: AttackEnable
+      - time: 0.49400085
+        functionName: CanCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -95,15 +102,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: StartAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.2635659
-        functionName: PlayAttackSound
+      - time: 0.9942363
+        functionName: AttackEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

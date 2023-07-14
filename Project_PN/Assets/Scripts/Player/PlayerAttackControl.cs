@@ -20,13 +20,17 @@ public enum weapon
 public class PlayerAttackControl : MonoBehaviour
 {
     [Header ("animtor")]
-    [SerializeField] private Animator anim;
+    [SerializeField] public Animator anim;
     [SerializeField] private Animator Bowanim;
-    
+    [SerializeField] private Animator Arrowanim;
+
     [Header("Weapons")]
     [SerializeField] private GameObject[] Swords;
     [SerializeField] private GameObject[] Bows;
+    [SerializeField] private GameObject arrow;
     [SerializeField] private GameObject[] Wands;
+    [SerializeField] private GameObject[] Skills;
+
 
     [Header("animtorOverrideController")]
     [SerializeField] private AnimatorOverrideController AOC_Sword;
@@ -36,7 +40,11 @@ public class PlayerAttackControl : MonoBehaviour
     [Header("Attack Trace")]
     [SerializeField] private GameObject MeleeAtackLoop;
 
-
+    private void Start()
+    {
+        EndDamage();
+        WeaponSwitch(301);
+    }
 
     AttackState state = AttackState.Combo01;
 
@@ -58,6 +66,13 @@ public class PlayerAttackControl : MonoBehaviour
             canCombo = false;
             SelectAttack();
         }
+    }
+
+    public void Skill()
+    {
+        GameObject skill = Instantiate(Skills[0], transform);
+        var info = skill.GetComponent<SkillInfoInterface>();
+        info.atkCon = this;
     }
 
     public void WeaponSwitch(int itemid)
@@ -94,14 +109,17 @@ public class PlayerAttackControl : MonoBehaviour
         {
             case weapon.Sword:
                 Swords[id].SetActive(true);
+                arrow.SetActive(false);
                 anim.runtimeAnimatorController = AOC_Sword;
                 break;
             case weapon.Bow:
                 Bows[id].SetActive(true);
+                arrow.SetActive(true);
                 anim.runtimeAnimatorController = AOC_Bow;
                 break;
             case weapon.Wand:
                 Wands[id].SetActive(true);
+                arrow.SetActive(false);
                 anim.runtimeAnimatorController = AOC_Wand;
                 break;
             default:
@@ -118,15 +136,17 @@ public class PlayerAttackControl : MonoBehaviour
         switch (state)
         {
             case AttackState.Combo01:
-                Debug.Log("aa");
                 if (canCombo == true)
                 {
                     canCombo = false;
+                    isAttacking = false;
                 }
+                isAttacking = false;
                 anim.CrossFade("Attack01", 0.1f);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack01", 0.1f);
+                    Arrowanim.CrossFade("Attack01", 0.1f);
                 }
                 state = AttackState.Combo02;
                 break;
@@ -134,11 +154,14 @@ public class PlayerAttackControl : MonoBehaviour
                 if (canCombo == true)
                 {
                     canCombo = false;
+                    isAttacking = false;
                 }
+                isAttacking = false;
                 anim.CrossFade("Attack02", 0.01f);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack01", 0.01f);
+                    Arrowanim.CrossFade("Attack01", 0.01f);
                 }
                 state = AttackState.Combo03;
                 break; 
@@ -146,11 +169,14 @@ public class PlayerAttackControl : MonoBehaviour
                 if (canCombo == true)
                 {
                     canCombo = false;
+                    isAttacking = false;
                 }
+                isAttacking = false;
                 anim.CrossFade("Attack03", 0.01f);
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack02", 0.01f);
+                    Arrowanim.CrossFade("Attack02", 0.01f);
                 }
                 state = AttackState.Combo01;
                 break;

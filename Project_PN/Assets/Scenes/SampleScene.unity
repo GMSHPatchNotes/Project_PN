@@ -959,6 +959,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1107732920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1463795632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5740819987910516185, guid: bf3896d80b06b09488a4c98cd6d5d851,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107732920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1463795633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963158037686519651, guid: bf3896d80b06b09488a4c98cd6d5d851,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107732920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1463795634 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1297178688547446041, guid: bf3896d80b06b09488a4c98cd6d5d851,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107732920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1688860927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6646806841625495550, guid: bf3896d80b06b09488a4c98cd6d5d851,
@@ -1049,12 +1067,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2096579538}
+  Character: {fileID: 603588664}
   atkCon: {fileID: 2096579541}
   As: {fileID: 1914210500}
   attackSound:
   - {fileID: 8300000, guid: 195182d7b29f9b0478c6f7695cbc5223, type: 3}
   - {fileID: 8300000, guid: 2cbd33041a905d14590b0e4175dd2365, type: 3}
   - {fileID: 8300000, guid: d717537814215d044bd2900b141b4397, type: 3}
+  arrowPos: {fileID: 1463795633}
 --- !u!82 &1914210500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1168,6 +1188,7 @@ GameObject:
   - component: {fileID: 2096579537}
   - component: {fileID: 2096579538}
   - component: {fileID: 2096579541}
+  - component: {fileID: 2096579542}
   - component: {fileID: 2096579540}
   - component: {fileID: 2096579539}
   m_Layer: 0
@@ -1192,7 +1213,7 @@ Transform:
   - {fileID: 603588664}
   - {fileID: 330585546}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2096579538
 MonoBehaviour:
@@ -1257,6 +1278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1914210498}
   Bowanim: {fileID: 1795946188}
+  Arrowanim: {fileID: 1463795634}
   Swords:
   - {fileID: 1215113142}
   - {fileID: 1688860927}
@@ -1268,17 +1290,35 @@ MonoBehaviour:
   - {fileID: 506328273}
   - {fileID: 153389108}
   - {fileID: 1899271119}
+  arrow: {fileID: 1463795632}
   Wands:
   - {fileID: 1107732924}
   - {fileID: 1107732923}
   - {fileID: 1107732922}
   - {fileID: 1107732921}
+  Skills:
+  - {fileID: 2574727718275705088, guid: 6d0f599f53ab3164ba51d07b4810b28a, type: 3}
+  - {fileID: 3407604102439438468, guid: 38874cea95e81344f8628e064bbef63e, type: 3}
   AOC_Sword: {fileID: 22100000, guid: b5425a355bdec9d488d8104eaf3372f4, type: 2}
   AOC_Bow: {fileID: 22100000, guid: 81f749fd051ac314690701a412e243f7, type: 2}
   AOC_Wand: {fileID: 22100000, guid: 5c41de21143cee34cb558eefca4e32d2, type: 2}
   MeleeAtackLoop: {fileID: 1158118995}
   isAttacking: 0
   canCombo: 0
+--- !u!114 &2096579542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096579536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e823b47790085964c8a3df1a4cbe78cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 1030886390429175683, guid: f2c2522e9985d1641bfe24199a329422,
+    type: 3}
 --- !u!1 &2105752107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,7 +1439,7 @@ PrefabInstance:
     - target: {fileID: 6327149316958458013, guid: b72d79fe70fdad14e85108820668004a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6327149316958458013, guid: b72d79fe70fdad14e85108820668004a,
         type: 3}

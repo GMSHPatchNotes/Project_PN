@@ -6,9 +6,11 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator playerAnim;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private Transform Character;
     [SerializeField] private PlayerAttackControl atkCon;
     [SerializeField] private AudioSource As;
     [SerializeField] private AudioClip[] attackSound = new AudioClip[3];
+    [SerializeField] private Transform arrowPos;
 
     void Start()
     {
@@ -35,6 +37,21 @@ public class PlayerAnimationEventsFunctionLibrary : MonoBehaviour
     {
         atkCon.canCombo = true;
     }
+
+    public void ArrowFire()
+    {
+        GameObject arrow = ArrowPool.instance.GetPooledObject();
+        Arrow csarrow = arrow.GetComponent<Arrow>();
+        
+        if (arrow != null)
+        {
+            arrow.SetActive(true);
+            arrow.transform.position = arrowPos.position;
+            arrow.transform.rotation = Character.transform.rotation;
+            csarrow.ResetPos();
+        }
+    }
+
 
     public void AttackEnd()
     {
