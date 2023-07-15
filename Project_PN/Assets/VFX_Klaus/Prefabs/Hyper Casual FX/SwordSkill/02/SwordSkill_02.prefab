@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6226415, g: 0.5844607, b: 0.5844607, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4766,7 +4766,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1.4142135, g: 0.74870133, b: 0.37157768, a: 1}
+      maxColor: {r: 0.1509434, g: 0.0019935842, b: 0.02061231, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5342,7 +5342,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6226415, g: 0.5844607, b: 0.5844607, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9778,7 +9778,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1.4142135, g: 0.74870133, b: 0.37157768, a: 1}
+      maxColor: {r: 0.4433962, g: 0, b: 0.014076017, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10149,8 +10149,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.39, y: 2.96, z: 6.85}
-  m_Center: {x: 0, y: 0.28, z: -3.13}
+  m_Size: {x: 3.39, y: 2.96, z: 4.896355}
+  m_Center: {x: 0, y: 0.27999997, z: -2.1531775}
 --- !u!114 &5472974210751079076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10163,6 +10163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862d7f3e4aae56341a2e55311c444cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkCon: {fileID: 0}
+  MousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8032117885316811889
 GameObject:
   m_ObjectHideFlags: 0
@@ -10385,8 +10387,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.37191978, b: 0.18396229, a: 1}
-      maxColor: {r: 1, g: 0.6786513, b: 0.3254717, a: 1}
+      minColor: {r: 0.5377358, g: 0, b: 0.054423023, a: 1}
+      maxColor: {r: 0.8773585, g: 0.15229617, b: 0.19926104, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

@@ -36,8 +36,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
-        AttackClick();
+        if (Input.GetMouseButtonDown(0))
+        {
+            AttackClick(false);
+        }
         
         if (!atkCon.isAttacking)
         {
@@ -99,20 +101,29 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(ray, out hit, 100);
     }
 
-    void AttackClick()
+    public Vector3 AttackClick(bool isSkill)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (CalCurMousePos())
         {
-            if (CalCurMousePos())
+            player.transform.LookAt(CurPointPos);
+
+                 
+            if (isSkill)
             {
-                player.transform.LookAt(CurPointPos);
+                return CurPointPos;
+            }
+            else
+            {
                 atkCon.AttackStart();
             }
+
+            return Vector3.zero;
         }
+        return Vector3.zero;
     }
 
 
-    
+
 
 
 

@@ -23,6 +23,7 @@ public class PlayerAttackControl : MonoBehaviour
     [SerializeField] public Animator anim;
     [SerializeField] private Animator Bowanim;
     [SerializeField] private Animator Arrowanim;
+    [SerializeField] public Transform player;
 
     [Header("Weapons")]
     [SerializeField] private GameObject[] Swords;
@@ -40,8 +41,11 @@ public class PlayerAttackControl : MonoBehaviour
     [Header("Attack Trace")]
     [SerializeField] private GameObject MeleeAtackLoop;
 
+    public PlayerMovement movement;
+
     private void Start()
     {
+        movement = GetComponent<PlayerMovement>();
         EndDamage();
         WeaponSwitch(301);
     }
@@ -70,7 +74,7 @@ public class PlayerAttackControl : MonoBehaviour
 
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[0], transform);
+        GameObject skill = Instantiate(Skills[1], transform);
         var info = skill.GetComponent<SkillInfoInterface>();
         info.atkCon = this;
     }
@@ -157,11 +161,11 @@ public class PlayerAttackControl : MonoBehaviour
                     isAttacking = false;
                 }
                 isAttacking = false;
-                anim.CrossFade("Attack02", 0.01f);
+                anim.CrossFade("Attack02", 0.02f);
                 if (battlestate == weapon.Bow)
                 {
-                    Bowanim.CrossFade("Attack01", 0.01f);
-                    Arrowanim.CrossFade("Attack01", 0.01f);
+                    Bowanim.CrossFade("Attack01", 0.02f);
+                    Arrowanim.CrossFade("Attack01", 0.02f);
                 }
                 state = AttackState.Combo03;
                 break; 
@@ -175,8 +179,8 @@ public class PlayerAttackControl : MonoBehaviour
                 anim.CrossFade("Attack03", 0.01f);
                 if (battlestate == weapon.Bow)
                 {
-                    Bowanim.CrossFade("Attack02", 0.01f);
-                    Arrowanim.CrossFade("Attack02", 0.01f);
+                    Bowanim.CrossFade("Attack02", 0.02f);
+                    Arrowanim.CrossFade("Attack02", 0.02f);
                 }
                 state = AttackState.Combo01;
                 break;
