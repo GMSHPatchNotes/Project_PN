@@ -1,0 +1,86 @@
+[
+   {
+      "id":302,
+      "name":"Slash Tornado",
+      "displayName":"폭풍참",
+      "arrNum":0,
+      "desc":"n초마다 피해를 입힘"
+   },
+   {
+      "id":303,
+      "name":"Dash Attack",
+      "displayName":"돌진",
+      "arrNum":1,
+      "desc":"전방으로 돌진해서 피해를 입힘"
+   },
+   {
+      "id":304,
+      "name":"Blood Steel",
+      "displayName":"피의 날",
+      "arrNum":2,
+      "desc":"고유 효과 : 피해 흡혈 / 사용 시 : 전방에 있는 모든 적에게 피해를 입힘"
+   },
+   {
+      "id":305,
+      "name":"Triple Burst",
+      "displayName":"삼폭",
+      "arrNum":3,
+      "desc":"고유 효과 : 매 3번째 공격 시 폭발을 일으켜 피해를 입힘 / 사용 시 : 설치기"
+   },
+   {
+      "id":401,
+      "name":"Stun Arrow",
+      "displayName":"기절 화살",
+      "arrNum":4,
+      "desc":"화살에 맞은 적은 n초동안 기절"
+   },
+   {
+      "id":402,
+      "name":"Spread Arrow",
+      "displayName":"확산 화살",
+      "arrNum":5,
+      "desc":"여러 방향으로 화살을 발사"
+   },
+   {
+      "id":403,
+      "name":"Penetrate Arrow",
+      "displayName":"관통 화살",
+      "arrNum":6,
+      "desc":"화살이 적을 관통"
+   },
+   {
+      "id":404,
+      "name":"Explosion Arrow",
+      "displayName":"폭발 화살",
+      "arrNum":7,
+      "desc":"화살이 폭발"
+   },
+   {
+      "id":501,
+      "name":"Orb Shot",
+      "displayName":"마원",
+      "arrNum":8,
+      "desc":"마법구를 발사"
+   },
+   {
+      "id":502,
+      "name":"Sky Trickle",
+      "displayName":"하울",
+      "arrNum":9,
+      "desc":"범위 안 모든 적에게 피해를 입힘"
+   },
+   {
+      "id":503,
+      "name":"Poison ",
+      "displayName":"독판",
+      "arrNum":10,
+      "desc":"독 장판을 깔아 적에게 지속피해를 입힘"
+   },
+   {
+      "id":504,
+      "name":"Violet Blasting",
+      "displayName":"자폭",
+      "arrNum":11,
+      "desc":"폭발을 일으켜 적에게 피해를 입힘"
+   }
+]
