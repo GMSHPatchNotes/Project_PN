@@ -25,6 +25,8 @@ public class EnemyMovement : MonoBehaviour
 
     public bool isAttacking;
 
+    public bool isstun;
+
     enum State
     {
         Idle,
@@ -35,6 +37,15 @@ public class EnemyMovement : MonoBehaviour
     State state;
 
     // Start is called before the first frame update
+
+
+    public IEnumerator Stun()
+    {
+        isstun = true;
+        Debug.Log("stun");
+        yield return new WaitForSeconds(3f);
+        isstun = false;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,18 +60,24 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (state == State.Idle)
+        if(!isstun)
         {
-            UpdateIdle();
+            
+            Debug.Log(state);
+            if (state == State.Idle)
+            {
+                UpdateIdle();
+            }
+            else if (state == State.Run)
+            {
+                UpdateRun();
+            }
+            else if (state == State.Attack)
+            {
+                UpdateAttack();
+            }
         }
-        else if (state == State.Run)
-        {
-            UpdateRun();
-        }
-        else if (state == State.Attack)
-        {
-            UpdateAttack();
-        }
+        
     }
 
     private void UpdateAttack()
@@ -99,6 +116,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else if(distance >= 10)
         {
+            Debug.Log("setidle");
             anim.SetBool("isRun", false);
             state = State.Idle;
         }
@@ -112,6 +130,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector3.Distance(transform.position, target.transform.position);
         if (target != null && distance <= 10)
         {
+            Debug.Log("idlefuck");
             state = State.Run;
             anim.SetBool("isRun", true);
         }

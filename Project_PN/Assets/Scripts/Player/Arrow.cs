@@ -19,11 +19,14 @@ public class Arrow : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * 10);
         if (distance > 25)
         {
+            
             Debug.Log("destroy");
             this.gameObject.SetActive(false);
         }
 
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +34,7 @@ public class Arrow : MonoBehaviour
         if (enemy)
         {
             enemy.TakeDamage(10);
+            
             this.gameObject.SetActive(false);
         }
     }

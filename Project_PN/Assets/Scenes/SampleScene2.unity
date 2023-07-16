@@ -1300,10 +1300,14 @@ MonoBehaviour:
   Skills:
   - {fileID: 2574727718275705088, guid: 6d0f599f53ab3164ba51d07b4810b28a, type: 3}
   - {fileID: 3407604102439438468, guid: 38874cea95e81344f8628e064bbef63e, type: 3}
+  - {fileID: 3131970189466852484, guid: 94429966129d3a54d81f4c4db356e366, type: 3}
+  - {fileID: 4925340580658442371, guid: e3d0dda217e791e42aad4170368efb1c, type: 3}
   AOC_Sword: {fileID: 22100000, guid: b5425a355bdec9d488d8104eaf3372f4, type: 2}
   AOC_Bow: {fileID: 22100000, guid: 81f749fd051ac314690701a412e243f7, type: 2}
   AOC_Wand: {fileID: 22100000, guid: 5c41de21143cee34cb558eefca4e32d2, type: 2}
   MeleeAtackLoop: {fileID: 1158118995}
+  movement: {fileID: 0}
+  StunAttack: 0
   isAttacking: 0
   canCombo: 0
 --- !u!114 &2096579542

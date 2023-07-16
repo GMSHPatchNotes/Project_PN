@@ -21,8 +21,8 @@ public class PlayerAttackControl : MonoBehaviour
 {
     [Header ("animtor")]
     [SerializeField] public Animator anim;
-    [SerializeField] private Animator Bowanim;
-    [SerializeField] private Animator Arrowanim;
+    [SerializeField] public Animator Bowanim;
+    [SerializeField] public Animator Arrowanim;
     [SerializeField] public Transform player;
 
     [Header("Weapons")]
@@ -30,7 +30,7 @@ public class PlayerAttackControl : MonoBehaviour
     [SerializeField] private GameObject[] Bows;
     [SerializeField] private GameObject arrow;
     [SerializeField] private GameObject[] Wands;
-    [SerializeField] private GameObject[] Skills;
+    [SerializeField] public GameObject[] Skills;
 
 
     [Header("animtorOverrideController")]
@@ -42,6 +42,7 @@ public class PlayerAttackControl : MonoBehaviour
     [SerializeField] private GameObject MeleeAtackLoop;
 
     public PlayerMovement movement;
+
 
     private void Start()
     {
@@ -57,6 +58,16 @@ public class PlayerAttackControl : MonoBehaviour
     public bool isAttacking = false;
     public bool canCombo = false;
 
+
+    public void LifeSteal(uint itemID, int StealPercentage)
+    {
+        float Percentage = StealPercentage * 0.01f;
+        var data = ItemDataManager.LoadData(itemID);
+        if(itemID == 304)
+        {
+            Stats.Health += data.ad * (Percentage * 100) ;
+        }
+    }
     public void AttackStart()
     {
         if (!isAttacking)
@@ -74,7 +85,7 @@ public class PlayerAttackControl : MonoBehaviour
 
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[1], transform);
+        GameObject skill = Instantiate(Skills[3], transform);
         var info = skill.GetComponent<SkillInfoInterface>();
         info.atkCon = this;
     }
