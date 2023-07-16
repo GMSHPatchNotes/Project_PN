@@ -94,23 +94,25 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 1000))
         {
             CurPointPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
+            
         }
-        return Physics.Raycast(ray, out hit, 100);
+        return Physics.Raycast(ray, out hit, 1000);
     }
 
     public Vector3 AttackClick(bool isSkill)
     {
         if (CalCurMousePos())
         {
+
             player.transform.LookAt(CurPointPos);
 
                  
             if (isSkill)
             {
-                return CurPointPos;
+                return new Vector3(CurPointPos.x,CurPointPos.y - 1.493818f,CurPointPos.z);
             }
             else
             {

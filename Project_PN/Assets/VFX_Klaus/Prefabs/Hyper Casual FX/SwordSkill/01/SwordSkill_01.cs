@@ -30,7 +30,7 @@ public class SwordSkill_01 : MonoBehaviour
         {
             if (enemy)
             {
-                enemy.TakeDamage(10);
+                enemy.TakeDamage(10, true);
             }
             yield return new WaitForSeconds(0.5f);
             Check++;

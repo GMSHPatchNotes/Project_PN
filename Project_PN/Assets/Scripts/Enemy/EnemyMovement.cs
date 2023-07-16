@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Rigidbody rb;
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
 
     [SerializeField] public Material[] mat = new Material[2];
@@ -27,6 +27,8 @@ public class EnemyMovement : MonoBehaviour
 
     public bool isstun;
 
+    public bool ispoison = false;
+
     enum State
     {
         Idle,
@@ -39,12 +41,19 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public IEnumerator Stun()
+    public void Stun()
     {
+        state = State.Idle;
         isstun = true;
-        Debug.Log("stun");
-        yield return new WaitForSeconds(3f);
+        Debug.Log("Stuntrue");
+        agent.SetDestination(transform.position);
+        Invoke("EndStun", 3f);
+    }
+
+    void EndStun()
+    {
         isstun = false;
+        Debug.Log("Stunfalse");
     }
     void Start()
     {
@@ -95,16 +104,21 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(int Damage, bool isAttack)
     {
         Debug.Log(Damage);
         //agent.enabled = false;
-        rb.velocity = Vector3.zero;
-        rb.AddForce(transform.forward * -5, ForceMode.Impulse);
+        if(isAttack)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(transform.forward * -5, ForceMode.Impulse);
+        }
+        
         mesh.material = mat[1];
         anim.CrossFade("Hit", 0.1f);
     }
 
+    
     private void UpdateRun()
     {
         float distance = Vector3.Distance(transform.position, target.transform.position);

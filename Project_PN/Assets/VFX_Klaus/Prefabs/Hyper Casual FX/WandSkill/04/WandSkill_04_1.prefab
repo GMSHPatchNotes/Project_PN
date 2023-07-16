@@ -15470,8 +15470,10 @@ GameObject:
   - component: {fileID: 3310820009152617768}
   - component: {fileID: 3310820009152617771}
   - component: {fileID: 3310820009152617770}
+  - component: {fileID: 3994314718110318586}
+  - component: {fileID: 17517323878465901}
   m_Layer: 0
-  m_Name: Explosion_03
+  m_Name: WandSkill_04_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20415,6 +20417,31 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!135 &3994314718110318586
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310820009152617773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.84
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &17517323878465901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310820009152617773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb2596ade271fe40b23d1a2af73965b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3711024980611748515
 GameObject:
   m_ObjectHideFlags: 0

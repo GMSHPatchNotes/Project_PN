@@ -50,8 +50,8 @@ public class BowSkill_01_Arrow : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10);
-            StartCoroutine(enemy.Stun());
+            enemy.TakeDamage(10, false);
+            enemy.Stun();
             Instantiate(effect, this.transform.position + Vector3.up, Quaternion.identity);
             Destroy(this.gameObject);
         }

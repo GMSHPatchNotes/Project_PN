@@ -85,7 +85,7 @@ public class PlayerAttackControl : MonoBehaviour
 
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[3], transform);
+        GameObject skill = Instantiate(Skills[3]);
         var info = skill.GetComponent<SkillInfoInterface>();
         info.atkCon = this;
     }

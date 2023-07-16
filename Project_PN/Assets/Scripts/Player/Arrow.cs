@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10);
+            enemy.TakeDamage(10,true);
             
             this.gameObject.SetActive(false);
         }

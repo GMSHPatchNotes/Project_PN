@@ -41,7 +41,7 @@ public class SwordSkill_02 : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10);
+            enemy.TakeDamage(10, true);
         }
     }
 }
