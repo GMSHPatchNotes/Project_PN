@@ -40,7 +40,15 @@ public class EnemyMovement : MonoBehaviour
 
     // Start is called before the first frame update
 
-
+    public void Poison()
+    {
+        ispoison = true;
+        Invoke("EndPoison", 4.0f);
+    }
+    void EndPoison()
+    {
+        ispoison = false;
+    }
     public void Stun()
     {
         state = State.Idle;
