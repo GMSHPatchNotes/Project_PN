@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 enum AttackState
 {
@@ -43,6 +44,12 @@ public class PlayerAttackControl : MonoBehaviour
 
     public PlayerMovement movement;
 
+    public static Action<uint,int> lifeSteal;
+
+    private void Awake()
+    {
+        lifeSteal = (itemID, StealPercentage) => { LifeSteal(itemID,StealPercentage); };
+    }
 
     private void Start()
     {
@@ -58,16 +65,17 @@ public class PlayerAttackControl : MonoBehaviour
     public bool isAttacking = false;
     public bool canCombo = false;
 
-
+    
     public void LifeSteal(uint itemID, int StealPercentage)
     {
         float Percentage = StealPercentage * 0.01f;
         var data = ItemDataManager.LoadData(itemID);
         if(itemID == 304)
         {
-            Stats.Health += data.ad * (Percentage * 100) ;
+            Stats.Health += data.ad * (Percentage * 100);
         }
     }
+    
     public void AttackStart()
     {
         if (!isAttacking)
@@ -85,7 +93,7 @@ public class PlayerAttackControl : MonoBehaviour
 
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[3]);
+        GameObject skill = Instantiate(Skills[2]);
         var info = skill.GetComponent<SkillInfoInterface>();
         info.atkCon = this;
     }

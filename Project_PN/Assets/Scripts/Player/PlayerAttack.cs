@@ -10,7 +10,8 @@ public class PlayerAttack : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10,true);    
+            enemy.TakeDamage(10,true);
+            PlayerAttackControl.lifeSteal(InventoryManager.slot1_id,6);
         }
     }
 }
