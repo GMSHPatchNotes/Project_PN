@@ -34,9 +34,12 @@ public class WandSkill_03 : MonoBehaviour
         if (enemy && !enemy.ispoison)
         {
             Instantiate(poison, enemy.transform);
-            enemy.ispoison = true;
+            enemy.Poison();
         }
     }
 
+   
     
+
+
 }

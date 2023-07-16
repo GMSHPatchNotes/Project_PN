@@ -7,12 +7,12 @@ public class WandSkill_03_Poison : MonoBehaviour
    
     void Start()
     {
-        
+        transform.position = new Vector3(transform.position.x,0.3f, transform.position.z);
         TickDamage();
         Destroy(this.gameObject,5f);
     }
 
-   
+
     void TickDamage()
     {
         EnemyMovement enemy = GetComponentInParent<EnemyMovement>();
@@ -21,17 +21,28 @@ public class WandSkill_03_Poison : MonoBehaviour
         Invoke("TickDamage", 0.5f);
     }
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
-        if(enemy && enemy.ispoison)
+        if(enemy && !enemy.ispoison)
         {
             Debug.Log("Àü¿°");
             Instantiate(this.gameObject, enemy.transform);
-            enemy.ispoison = true;
+            enemy.Poison();
         }
             
             
         
+    }*/
+
+    private void OnTriggerStay(Collider other)
+    {
+        EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+        if (enemy && !enemy.ispoison)
+        {
+            Debug.Log("Àü¿°");
+            Instantiate(this.gameObject, enemy.transform);
+            enemy.Poison();
+        }
     }
 }
