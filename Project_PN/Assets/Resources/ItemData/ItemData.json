@@ -99,7 +99,7 @@
       "atkspd":1,
       "desc":"화로에서 타지 않은 체 아주 곱게 뻗은 나무 지팡이이다",
       "skillname":null,
-      "image":"none"
+      "image":"Stick"
    },
    {
       "id":302,
@@ -133,7 +133,7 @@
       "atkspd":1,
       "desc":" ",
       "skillname":null,
-      "image":"none"
+      "image":"UnnamedSword"
    },
    {
       "id":304,
@@ -167,7 +167,7 @@
       "atkspd":1,
       "desc":" ",
       "skillname":null,
-      "image":"none"
+      "image":"GreatswordOfHeaven"
    },
    {
       "id":401,

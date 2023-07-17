@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             Move();
             if (Input.GetKeyDown(KeyCode.F))
             {
-                atkCon.WeaponSwitch(304);
+                atkCon.WeaponSwitch(305);
             }
             if (Input.GetKeyDown(KeyCode.G))
             {

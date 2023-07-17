@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 enum AttackState
 {
@@ -46,9 +47,16 @@ public class PlayerAttackControl : MonoBehaviour
 
     public static Action<uint,int> lifeSteal;
 
+    public static Action StackAttacking;
+
+    [Header("Stack Attack")]
+    [SerializeField] GameObject StackExplosion;
+
+    public static int AttackStack = 0;
     private void Awake()
     {
         lifeSteal = (itemID, StealPercentage) => { LifeSteal(itemID,StealPercentage); };
+        StackAttacking = () => { TripleShot(); };
     }
 
     private void Start()
@@ -65,7 +73,19 @@ public class PlayerAttackControl : MonoBehaviour
     public bool isAttacking = false;
     public bool canCombo = false;
 
-    
+
+    public void TripleShot()
+    {
+
+        GameObject Triple = Instantiate(StackExplosion, transform.position, Quaternion.identity);
+        var info = Triple.GetComponent<SkillInfoInterface>();
+        info.atkCon = this;
+    }
+
+    private void Update()
+    {
+        Debug.Log($"Stack : {PlayerAttackControl.AttackStack}");
+    }
     public void LifeSteal(uint itemID, int StealPercentage)
     {
         float Percentage = StealPercentage * 0.01f;
@@ -91,9 +111,10 @@ public class PlayerAttackControl : MonoBehaviour
         }
     }
 
+    
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[2]);
+        GameObject skill = Instantiate(Skills[8]);
         var info = skill.GetComponent<SkillInfoInterface>();
         info.atkCon = this;
     }
@@ -189,6 +210,11 @@ public class PlayerAttackControl : MonoBehaviour
                 state = AttackState.Combo03;
                 break; 
             case AttackState.Combo03:
+                if(InventoryManager.slot1_id == 305)
+                {
+                    TripleShot();
+                }
+                
                 if (canCombo == true)
                 {
                     canCombo = false;

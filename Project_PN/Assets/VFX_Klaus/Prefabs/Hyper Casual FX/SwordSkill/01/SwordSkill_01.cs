@@ -12,8 +12,10 @@ public class SwordSkill_01 : MonoBehaviour
 
     void Start()
     {
+        
         //transform.parent = attackControl.transform;
         Info = GetComponent<SkillInfoInterface>();
+        Info.atkCon.transform.parent = transform;
         StartCoroutine("Damage");
         transform.position += new Vector3(0, 0.7f, 0);
     }

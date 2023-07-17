@@ -22,8 +22,8 @@ public class InventoryManager : MonoBehaviour
 
     
 
-    public static uint slot1_id = 302;
-    public static uint slot2_id = 304;
+    public static uint slot1_id = 305;
+    public static uint slot2_id = 305;
 
     public static uint slot3_id = 302;
 

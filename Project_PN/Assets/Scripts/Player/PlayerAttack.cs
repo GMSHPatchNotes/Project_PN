@@ -11,6 +11,19 @@ public class PlayerAttack : MonoBehaviour
         if (enemy)
         {
             enemy.TakeDamage(10,true);
+            //if(InventoryManager.slot1_id == 305)
+            //{
+                
+            //    if(PlayerAttackControl.AttackStack == 2)
+            //    {
+            //        PlayerAttackControl.StackAttacking();
+            //    }
+            //    else
+            //    {
+            //        PlayerAttackControl.AttackStack++;
+            //    }
+                
+            //}
             PlayerAttackControl.lifeSteal(InventoryManager.slot1_id,6);
         }
     }
