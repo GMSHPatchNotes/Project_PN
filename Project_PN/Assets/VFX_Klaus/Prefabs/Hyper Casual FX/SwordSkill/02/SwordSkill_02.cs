@@ -10,7 +10,7 @@ public class SwordSkill_02 : MonoBehaviour
 
     Rigidbody rb;
 
-
+    int SkillDamage;
     private void Start()
     {
         Info = GetComponent<SkillInfoInterface>();
@@ -22,6 +22,7 @@ public class SwordSkill_02 : MonoBehaviour
         Info.atkCon.anim.CrossFade("Attack02", 0.1f);
         StartCoroutine(End());
         rb.velocity = Vector3.zero;
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ad;
         rb.AddForce(Info.atkCon.player.transform.forward * 50, ForceMode.Impulse);
     }
 
@@ -32,7 +33,7 @@ public class SwordSkill_02 : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(0.2f);
-
+        PlayerMovement.SkillUsing = false;
         Destroy(this.gameObject);
     }
 
@@ -41,7 +42,7 @@ public class SwordSkill_02 : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10, true);
+            enemy.TakeDamage(SkillDamage, true);
         }
     }
 }

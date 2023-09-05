@@ -6,6 +6,7 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
 {
     private Animator EnemyAnim;
     [SerializeField] private EnemyMovement Enemy;
+    [SerializeField] private GameObject attack;
 
     
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
     {
         Enemy.rb.velocity = Vector3.zero;
         Enemy.mesh.material = Enemy.mat[0];
+        Debug.Log("End");
     }
 
 
@@ -31,10 +33,12 @@ public class EnemyAnimationEventsFunctionLibrary : MonoBehaviour
     {
         Enemy.CanMove = true;
         Enemy.isAttacking = true;
+        attack.SetActive(true);
     }
 
     public void AttackEnd()
     {
         Enemy.isAttacking = false;
+        attack.SetActive(false);
     }
 }

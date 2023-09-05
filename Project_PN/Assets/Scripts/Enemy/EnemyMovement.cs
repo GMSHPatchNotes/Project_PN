@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,9 +16,14 @@ public class EnemyMovement : MonoBehaviour
 
     public NavMeshAgent agent;
 
+    [SerializeField] private int Health = 100;
+
 
     [SerializeField] public Material[] mat = new Material[2];
     [SerializeField] public SkinnedMeshRenderer mesh;
+
+    [Header("animtorOverrideController")]
+    [SerializeField] private AnimatorOverrideController AOC_EnemyType;
 
     public Animator anim;
 
@@ -69,6 +75,10 @@ public class EnemyMovement : MonoBehaviour
         state = State.Idle;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
+        if (AOC_EnemyType)
+        {
+            anim.runtimeAnimatorController = AOC_EnemyType;
+        }
         if (target != null)
         {
             agent.destination = target.transform.position;
@@ -80,7 +90,7 @@ public class EnemyMovement : MonoBehaviour
         if(!isstun)
         {
             
-            Debug.Log(state);
+            //Debug.Log(state);
             if (state == State.Idle)
             {
                 UpdateIdle();
@@ -112,18 +122,34 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int Damage, bool isAttack)
+    public void TakeDamage(int Damage, bool knockback)
     {
         Debug.Log(Damage);
+        Health -= Damage;
         //agent.enabled = false;
-        if(isAttack)
+        if (Health <= 0)
+        {
+            Debug.Log("Die");
+            anim.CrossFade("Die", 0.1f);
+            isstun = true;
+            Invoke("Die", 3f);
+        }
+        if(knockback)
         {
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * -5, ForceMode.Impulse);
         }
-        
         mesh.material = mat[1];
-        anim.CrossFade("Hit", 0.1f);
+        if (!isstun)
+        {
+            anim.CrossFade("Hit", 0.1f);
+        }
+        //anim.Play("Hit");
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
     

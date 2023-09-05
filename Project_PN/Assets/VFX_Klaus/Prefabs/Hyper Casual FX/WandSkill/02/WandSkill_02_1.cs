@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WandSkill_02_1 : MonoBehaviour
 {
+    int SkillDamage;
     void Start()
     {
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ap;
         Destroy(this.gameObject, 0.4f);
     }
 
@@ -15,7 +17,7 @@ public class WandSkill_02_1 : MonoBehaviour
 
         if(enemy)
         {
-            
+            enemy.TakeDamage(SkillDamage, false);
         }
     }
 

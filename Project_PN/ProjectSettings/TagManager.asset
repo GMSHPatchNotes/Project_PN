@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - SlotWeapon
+  - SlotImg
+  - SlotSkill
   layers:
   - Default
   - TransparentFX

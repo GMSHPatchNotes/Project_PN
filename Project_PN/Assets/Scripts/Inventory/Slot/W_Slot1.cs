@@ -93,7 +93,9 @@ public class W_Slot1 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void DataReload()
     {
         var data = ItemDataManager.LoadData(ItemID);
+        Debug.Log($"data.image : {data.image}");
         Sprite img = Resources.Load<Sprite>($"ItemSprites/{data.image}");
+
         ItemImage.sprite = img;
     }
 
@@ -122,9 +124,9 @@ public class W_Slot1 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             Item_Stats.text += $"<color=#ffffff>이동 속도</color> {data.spd}\n";
         }
-        if (data.atkspd != 0)
-        {
-            Item_Stats.text += $"<color=#ffed4f>공격 속도</color> {data.atkspd}%\n";
-        }
+        //if (data.atkspd != 0)
+        //{
+        //    Item_Stats.text += $"<color=#ffed4f>공격 속도</color> {data.atkspd}%\n";
+        //}
     }
 }

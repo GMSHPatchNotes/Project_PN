@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
             //    }
                 
             //}
-            PlayerAttackControl.lifeSteal(InventoryManager.slot1_id,6);
+            //PlayerAttackControl.lifeSteal(InventoryManager.slot1_id,6);
         }
     }
 }

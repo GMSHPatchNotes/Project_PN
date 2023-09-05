@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEditor.Rendering.BuiltIn.ShaderGraph;
 using UnityEngine;
@@ -18,24 +19,55 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator playerAnim;
     [SerializeField] private PlayerAttackControl atkCon;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] CapsuleCollider col;
 
+    [Header("CoolTime Images")]
+    [SerializeField] Image CoolTime_img;
+    [SerializeField] Text CoolTime_Text;
+    public static float WeaponChangeCoolTime = 0f;
+
+    public static bool WeaponChanging = false;
     const int comboAttackLimit = 4; // player can combo Attack affter first attack
 
     public bool canMove ; //player can move
     public bool canComboAttack; // player can comboattack
 
+    public static bool SkillUsing = false;
+
     private Vector3 Dir;
     private Vector3 CurPointPos;
 
-    
-    
+    private void Awake()
+    {
+        col = GetComponent<CapsuleCollider>();
+    }
+
     void Start()
     {
         canMove = true;
     }
 
+   
+    public void TakeDamage(int Damage, bool knockback)
+    {
+        Stats.Health -= Damage;
+        playerAnim.CrossFade("GetHit01", 0.1f);
+    }
     void Update()
     {
+        if(WeaponChanging && WeaponChangeCoolTime >= 0f)
+        {
+            WeaponChangeCoolTime -= Time.deltaTime;
+            CoolTime_Text.text = WeaponChangeCoolTime.ToString("F1");
+            CoolTime_img.fillAmount = WeaponChangeCoolTime / 4;
+        }
+        else
+        {
+            CoolTime_img.fillAmount = 0;
+            CoolTime_Text.text = "";
+            WeaponChanging = false;
+        }
+        WeaponChange();
         if (Input.GetMouseButtonDown(0))
         {
             AttackClick(false);
@@ -44,15 +76,22 @@ public class PlayerMovement : MonoBehaviour
         if (!atkCon.isAttacking)
         {
             Move();
-            if (Input.GetKeyDown(KeyCode.F))
+            if(!SkillUsing && !WeaponChanging)
             {
-                atkCon.WeaponSwitch(305);
+                
+                
+                if (Input.GetKeyDown(KeyCode.F) && InventoryManager.slot2_id != 0)
+                {
+                    WeaponChangeCoolTime = 4f;
+                    WeaponChanging = true;
+                    //PlayerAttackControl.isCoolTime = true;
+                    Debug.Log("Switching");
+                    atkCon.WeaponSwitch(InventoryManager.slot1_id);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                atkCon.WeaponSwitch(403);
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
+            
+           
+            if (Input.GetKeyDown(KeyCode.Q) && InventoryManager.slot1_id != 301)
             {
                 atkCon.Skill();
             }
@@ -87,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position += Dir * MoveSpeed * Time.deltaTime;
         }
     }
-
+   
     bool CalCurMousePos()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -100,6 +139,83 @@ public class PlayerMovement : MonoBehaviour
             
         }
         return Physics.Raycast(ray, out hit, 1000);
+    }
+
+    void WeaponChange()
+    {
+
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            InventoryManager.slot2_id = 302;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+            
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            InventoryManager.slot2_id = 303;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            InventoryManager.slot2_id = 304;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            InventoryManager.slot2_id = 305;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        /*if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            InventoryManager.slot2_id = 401;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }*/
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            InventoryManager.slot2_id = 501;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            InventoryManager.slot2_id = 502;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            InventoryManager.slot2_id = 503;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            InventoryManager.slot2_id = 504;
+            W_Slot2.W2_ReloadID();
+            W_Slot2.W2_ReloadData();
+
+            W_Slot2.W2_ReloadInfoData();
+        }
     }
 
     public Vector3 AttackClick(bool isSkill)
@@ -124,8 +240,19 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.zero;
     }
 
+    //void Hurt()
+    //{
+    //    Stats.Health -= 10f;
+    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyMovement enemy = other.GetComponent<EnemyMovement>();
 
-
+        if(enemy)
+        {
+            //Invoke("Hurt", 0.5f);
+        }
+    }
 
 
 

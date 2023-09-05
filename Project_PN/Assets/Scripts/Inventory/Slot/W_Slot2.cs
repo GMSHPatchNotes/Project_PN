@@ -55,6 +55,7 @@ public class W_Slot2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         ResetText();
         IDLoad();
         ItemImage = GetComponentInChildren<Image>();
+        DataReload();
     }
 
     // Update is called once per frame
@@ -64,7 +65,17 @@ public class W_Slot2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
        ItemID = InventoryManager.slot2_id;
     }
-    
+    private void Update()
+    {
+        if(InventoryManager.slot2_id != 0)
+        {
+            ItemEnable = true;
+        }
+        else
+        {
+            ItemEnable = false;
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (ItemEnable)
@@ -89,9 +100,19 @@ public class W_Slot2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [ContextMenu("DataReload")]
     void DataReload()
     {
-        var data = ItemDataManager.LoadData(ItemID);
-        Sprite img = Resources.Load<Sprite>($"ItemSprites/{data.image}");
-        ItemImage.sprite = img;
+        if(InventoryManager.slot2_id == 0)
+        {
+            Sprite img = Resources.Load<Sprite>($"ItemSprites/None");
+            ItemImage.sprite = img;
+        }
+        else
+        {
+            var data = ItemDataManager.LoadData(ItemID);
+            Sprite img = Resources.Load<Sprite>($"ItemSprites/{data.image}");
+            ItemImage.sprite = img;
+
+        }
+        
     }
 
 
@@ -119,9 +140,9 @@ public class W_Slot2 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             Item_Stats.text += $"<color=#ffffff>이동 속도</color> {data.spd}\n";
         }
-        if (data.atkspd != 0)
-        {
-            Item_Stats.text += $"<color=#ffed4f>공격 속도</color> {data.atkspd}%\n";
-        }
+        //if (data.atkspd != 0)
+        //{
+        //    Item_Stats.text += $"<color=#ffed4f>공격 속도</color> {data.atkspd}%\n";
+        //}
     }
 }

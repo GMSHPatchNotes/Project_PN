@@ -34,7 +34,43 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Unreal Take
+      takeName: Unreal Take
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 22
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.7596612
+        functionName: HitEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -83,7 +119,192 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: BishopKnight_SK(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BishopKnight_SK
+      parentName: BishopKnight_SK(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bishopKnight_root
+      parentName: BishopKnight_SK(Clone)
+      position: {x: -0, y: 0.007593994, z: 1.2262634}
+      rotation: {x: 0.10971831, y: 0.69854265, z: 0.10971828, w: 0.6985428}
+      scale: {x: 1.0000006, y: 1.0000004, z: 1.0000005}
+    - name: bishopKnight_spine01
+      parentName: bishopKnight_root
+      position: {x: -0.22498019, y: -1.4210854e-16, z: -7.4758956e-17}
+      rotation: {x: -0.0000000372529, y: 0.000000059604638, z: -0.14562462, w: 0.98933995}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: bishopKnight_spine02
+      parentName: bishopKnight_spine01
+      position: {x: -0.25439173, y: 4.0856205e-16, z: 4.4202928e-16}
+      rotation: {x: -0.000000044943747, y: 0.000000048027943, z: 0.13431577, w: -0.99093854}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.99999994}
+    - name: bishopKnight_spine03
+      parentName: bishopKnight_spine02
+      position: {x: -0.24205898, y: 2.1316282e-16, z: 5.122918e-16}
+      rotation: {x: -0.09833264, y: 0.78619313, z: -0.07649914, w: -0.60529256}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999998}
+    - name: bishopKnight_upperArmLeft
+      parentName: bishopKnight_spine03
+      position: {x: -0.21855882, y: -1.4321877e-16, z: 0}
+      rotation: {x: 0.0068225763, y: 0.09821499, z: -0.016084822, w: 0.9950119}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: bishopKnight_lowerArmLeft
+      parentName: bishopKnight_upperArmLeft
+      position: {x: -0.6804202, y: 4.973799e-16, z: 0}
+      rotation: {x: -0.0021718717, y: 0.018137008, z: 0.042081438, w: 0.99894726}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000006}
+    - name: bishopKnight_handLeft
+      parentName: bishopKnight_lowerArmLeft
+      position: {x: -0.6435743, y: -3.5527135e-16, z: -1.1368684e-15}
+      rotation: {x: 0.0068374225, y: -0.022243982, z: 0.009605772, w: 0.9996831}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: bishopKnight_shield
+      parentName: bishopKnight_handLeft
+      position: {x: -0.093927436, y: 3.5527136e-17, z: 2.2737367e-15}
+      rotation: {x: -0.005071445, y: 0.17536244, z: 0.02845928, w: 0.9840795}
+      scale: {x: 1, y: 1.0000004, z: 1.0000002}
+    - name: bishopKnight_upperArmRight
+      parentName: bishopKnight_spine03
+      position: {x: 0.1900143, y: -0.0005266288, z: -0.10799126}
+      rotation: {x: -0.012564616, y: 0.9870932, z: 0.010601762, w: -0.15930094}
+      scale: {x: 0.99999994, y: 1.0000004, z: 1}
+    - name: bishopKnight_lowerArmRight
+      parentName: bishopKnight_upperArmRight
+      position: {x: -0.6804208, y: 1.5099033e-16, z: -8.5265126e-16}
+      rotation: {x: 0.0021720396, y: -0.018138884, z: 0.042081196, w: 0.99894714}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000001}
+    - name: bishopKnight_handRight
+      parentName: bishopKnight_lowerArmRight
+      position: {x: -0.64357305, y: -8.348877e-16, z: 5.684342e-16}
+      rotation: {x: 0.03898643, y: -0.98742986, z: -0.0006764883, w: -0.15317315}
+      scale: {x: 0.9999997, y: 1.0000002, z: 0.99999994}
+    - name: bishopKnight_index01Right
+      parentName: bishopKnight_handRight
+      position: {x: 0.2969968, y: 0.033071764, z: 0.005238868}
+      rotation: {x: 0.036513057, y: -0.9930952, z: -0.0016893892, w: 0.111471735}
+      scale: {x: 1.0000007, y: 1.0000002, z: 1.0000005}
+    - name: bishopKnight_index02Right
+      parentName: bishopKnight_index01Right
+      position: {x: -0.1708201, y: 1.7763567e-16, z: -0.0039314018}
+      rotation: {x: 0.0061004655, y: 0.019941974, z: 0.05257973, w: 0.998399}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: bishopKnight_index03Right
+      parentName: bishopKnight_index02Right
+      position: {x: -0.15437303, y: 0.0052229087, z: -0.011639541}
+      rotation: {x: -0.000000009726995, y: 0.00000006981221, z: 0.0769161, w: 0.9970376}
+      scale: {x: 1.000001, y: 1.0000004, z: 1.0000002}
+    - name: bishopKnight_middle01Right
+      parentName: bishopKnight_handRight
+      position: {x: 0.27533305, y: 0.049324043, z: -0.093210235}
+      rotation: {x: -0.013878557, y: 0.9864206, z: 0.0071520437, w: -0.16349529}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000004}
+    - name: bishopKnight_middle02Right
+      parentName: bishopKnight_middle01Right
+      position: {x: -0.1819506, y: -0.003910316, z: -0.00451264}
+      rotation: {x: -0.0045935037, y: -0.010977455, z: -0.050090387, w: -0.9986738}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.0000002}
+    - name: bishopKnight_middle03Right
+      parentName: bishopKnight_middle02Right
+      position: {x: -0.16726719, y: 0.0011656828, z: -0.008909221}
+      rotation: {x: 0.000000020512312, y: -0.00000003459686, z: 0.10852292, w: 0.994094}
+      scale: {x: 1.0000005, y: 1.0000002, z: 1.0000002}
+    - name: bishopKnight_ring01Right
+      parentName: bishopKnight_handRight
+      position: {x: 0.23957743, y: 0.037934702, z: -0.18975425}
+      rotation: {x: 0.021157779, y: -0.97863036, z: -0.010613989, w: 0.20426033}
+      scale: {x: 1.0000008, y: 1.0000002, z: 1.0000006}
+    - name: bishopKnight_ring02Right
+      parentName: bishopKnight_ring01Right
+      position: {x: -0.1819506, y: -0.003910316, z: -0.00451264}
+      rotation: {x: 0.0031792861, y: 0.010159143, z: 0.05173493, w: 0.9986042}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: bishopKnight_ring03Right
+      parentName: bishopKnight_ring02Right
+      position: {x: -0.16725746, y: 0.0011812189, z: -0.0090879705}
+      rotation: {x: 0.000000028528373, y: 0.00000012558849, z: 0.12958373, w: 0.99156845}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1}
+    - name: bishopKnight_Spear
+      parentName: bishopKnight_handRight
+      position: {x: 0.26514006, y: -0.09135288, z: -0.083919406}
+      rotation: {x: -0.000000018626448, y: 0.13575518, z: 0.000000011175868, w: 0.9907424}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: bishopKnight_thumb01Right
+      parentName: bishopKnight_handRight
+      position: {x: 0.15471725, y: -0.04888744, z: 0.103290565}
+      rotation: {x: 0.27745548, y: 0.7572901, z: 0.5694586, w: 0.15889277}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1.0000002}
+    - name: bishopKnight_thumb02Right
+      parentName: bishopKnight_thumb01Right
+      position: {x: -0.21583097, y: -0.008139599, z: 0.0024690286}
+      rotation: {x: 0.0084874565, y: -0.056364376, z: 0.05257539, w: 0.9969889}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999998}
+    - name: bishopKnight_thumb03Right
+      parentName: bishopKnight_thumb02Right
+      position: {x: -0.16012079, y: 0.00005022703, z: 0.023707215}
+      rotation: {x: 0.02269272, y: -0.017620752, z: 0.27237985, w: 0.9617608}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: bishopKnight_neck01
+      parentName: bishopKnight_spine03
+      position: {x: 0.038422797, y: -0.011325403, z: 0.14542352}
+      rotation: {x: 0.009295194, y: 0.7922642, z: 0.0063712043, w: 0.6100741}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.99999994}
+    - name: bishopKnight_neck02
+      parentName: bishopKnight_neck01
+      position: {x: -0.19023758, y: 2.2204459e-17, z: -6.9995315e-17}
+      rotation: {x: 0.000000036321577, y: -0, z: 0.051300447, w: -0.99868333}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: bishopKnight_neck03
+      parentName: bishopKnight_neck02
+      position: {x: -0.20362735, y: 3.5527136e-17, z: 2.871791e-15}
+      rotation: {x: -0.000000029944037, y: 0.000000030376686, z: -0.057005007, w: -0.9983739}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000004}
+    - name: bishopKnight_head
+      parentName: bishopKnight_neck03
+      position: {x: -0.1948942, y: -1.3322676e-16, z: 2.5504338e-15}
+      rotation: {x: -0.011879152, y: -0.707007, z: -0.011879161, w: 0.707007}
+      scale: {x: 1, y: 1.0000002, z: 1.0000004}
+    - name: bishopKnight_Skirt01
+      parentName: bishopKnight_root
+      position: {x: 0.19508648, y: -0.056565862, z: 5.0993745e-16}
+      rotation: {x: -0.06635396, y: -0.9977962, z: -0.0000000074505797, w: 0.000000029802319}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: bishopKnight_Skirt02
+      parentName: bishopKnight_Skirt01
+      position: {x: -0.46675998, y: 1.4210854e-16, z: 7.637183e-18}
+      rotation: {x: 0.000000028979914, y: -0.000000031468147, z: -0.04052978, w: 0.9991784}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000002}
+    - name: bishopKnight_Skirt03
+      parentName: bishopKnight_Skirt02
+      position: {x: -0.53845674, y: 5.32907e-16, z: -2.77223e-16}
+      rotation: {x: -0, y: -0, z: 9.11944e-16, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+    - name: bishopKnight_SkirtFront
+      parentName: bishopKnight_Skirt03
+      position: {x: 0.08800419, y: -0.33540636, z: -2.7394078e-16}
+      rotation: {x: -0.091617994, y: 0.70114625, z: 0.091618, w: 0.7011463}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000006}
+    - name: bishopKnight_SkirtLeft
+      parentName: bishopKnight_Skirt03
+      position: {x: -0.0038344213, y: 0.00005801522, z: 0.42337835}
+      rotation: {x: -0.091617994, y: 0.70114625, z: 0.091618, w: 0.7011463}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000006}
+    - name: bishopKnight_SkirtRear
+      parentName: bishopKnight_Skirt03
+      position: {x: -0.14245562, y: 0.5612413, z: -1.2666542e-15}
+      rotation: {x: -0.091617994, y: 0.70114625, z: 0.091618, w: 0.7011463}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000006}
+    - name: bishopKnight_SkirtRight
+      parentName: bishopKnight_Skirt03
+      position: {x: -0.0038344404, y: 0.000057894387, z: -0.423378}
+      rotation: {x: 0.70114636, y: 0.09161801, z: -0.70114636, w: 0.091618024}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000004}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -96,11 +317,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 806ae69ce732c804998594284f64fb13,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

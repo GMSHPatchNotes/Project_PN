@@ -21,7 +21,13 @@ public class WandSkill_03 : MonoBehaviour
         //transform.rotation = info.atkCon.player.transform.rotation;
         this.transform.position = info.MousePos;
 
-        Destroy(this.gameObject, 5.5f);
+        Invoke("End", 5.5f);
+    }
+
+    void End()
+    {
+        PlayerMovement.SkillUsing = false;
+        Destroy(this.gameObject);
     }
 
 

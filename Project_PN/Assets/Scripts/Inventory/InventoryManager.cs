@@ -22,18 +22,19 @@ public class InventoryManager : MonoBehaviour
 
     
 
-    public static uint slot1_id = 305;
-    public static uint slot2_id = 305;
+    public static uint slot1_id = 301;
+    public static uint slot2_id = 0;
 
-    public static uint slot3_id = 302;
-
+    public static uint slot3_id = 201;
+    public static uint slot4_id;
     // Start is called before the first frame update
     private void Awake()
     {
-       
+        slot4_id = slot1_id;
     }
     void Start()
     {
+        
         ItemDataManager.GetInstance();
         Invoke("Setting", 0.1f);
     }
@@ -43,22 +44,26 @@ public class InventoryManager : MonoBehaviour
        
         W_Slot1.W1_ReloadID();
         W_Slot2.W2_ReloadID();
+        W_Slot4.W4_ReloadID();
         
         W_Slot1.W1_ReloadData();
         W_Slot2.W2_ReloadData();
+        W_Slot4.W4_ReloadData();
     }
 
     // Update is called once per frame
     void Update()
     {
+        slot4_id = slot1_id;
         MousePosition();
         WeaponChange();
     }
 
     void WeaponChange()
     {
-        if(Input.GetKeyDown(SwapKey))
+        if(Input.GetKeyDown(SwapKey) && InventoryManager.slot2_id != 0 && !PlayerMovement.SkillUsing && !PlayerMovement.WeaponChanging)
         {
+          
             uint tmp;
 
             tmp = slot1_id;
@@ -79,6 +84,11 @@ public class InventoryManager : MonoBehaviour
             {
                 W_Slot3.W3_ReloadInfoData();
                 Debug.Log("info3");
+            }
+            if(W_Slot4.MouseOverlaping)
+            {
+                W_Slot4.W4_ReloadInfoData();
+                Debug.Log("info4");
             }
             Setting();
         }

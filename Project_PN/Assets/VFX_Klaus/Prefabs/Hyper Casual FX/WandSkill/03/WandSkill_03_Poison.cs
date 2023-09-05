@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class WandSkill_03_Poison : MonoBehaviour
 {
-   
+
+    int SkillDamage;
     void Start()
     {
         transform.position = new Vector3(transform.position.x,0.3f, transform.position.z);
         TickDamage();
-        Destroy(this.gameObject,5f);
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ap;
+        Destroy(this.gameObject, 5f);
     }
 
-
+    
     void TickDamage()
     {
         EnemyMovement enemy = GetComponentInParent<EnemyMovement>();
         Debug.Log($"Tick Damage : {enemy}");
-        enemy.TakeDamage(20,false);
+        enemy.TakeDamage(SkillDamage,false);
         Invoke("TickDamage", 0.5f);
     }
 

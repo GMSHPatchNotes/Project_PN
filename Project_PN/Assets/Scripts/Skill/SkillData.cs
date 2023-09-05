@@ -11,4 +11,5 @@ public class SkillData
     public string displayName;
     public uint arrNum;
     public string desc;
+    public float cooltime;
 }

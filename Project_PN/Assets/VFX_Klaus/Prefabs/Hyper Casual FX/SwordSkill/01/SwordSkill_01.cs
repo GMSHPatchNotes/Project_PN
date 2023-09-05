@@ -10,6 +10,7 @@ public class SwordSkill_01 : MonoBehaviour
 
     SkillInfoInterface Info;
 
+    int SkillDamage;
     void Start()
     {
         
@@ -17,6 +18,7 @@ public class SwordSkill_01 : MonoBehaviour
         Info = GetComponent<SkillInfoInterface>();
         Info.atkCon.transform.parent = transform;
         StartCoroutine("Damage");
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ad;
         transform.position += new Vector3(0, 0.7f, 0);
     }
 
@@ -32,13 +34,14 @@ public class SwordSkill_01 : MonoBehaviour
         {
             if (enemy)
             {
-                enemy.TakeDamage(10, true);
+                enemy.TakeDamage(SkillDamage, true);
             }
             yield return new WaitForSeconds(0.5f);
             Check++;
             if (Check == 12)
             {
                 Info.atkCon.anim.SetBool("AttackEnd", true);
+                PlayerMovement.SkillUsing = false;
                 Destroy(this.gameObject);
             }
         }

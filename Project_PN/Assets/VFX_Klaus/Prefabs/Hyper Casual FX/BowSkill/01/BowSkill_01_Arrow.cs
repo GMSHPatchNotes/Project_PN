@@ -6,6 +6,7 @@ public class BowSkill_01_Arrow : MonoBehaviour
 {
     SkillInfoInterface info;
     [SerializeField] GameObject effect;
+    int SkillDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class BowSkill_01_Arrow : MonoBehaviour
         info.atkCon.anim.CrossFade("Attack01", 0.1f);
         info.atkCon.Bowanim.CrossFade("Attack01", 0.02f);
         info.atkCon.Arrowanim.CrossFade("Attack01", 0.02f);
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ad;
         //Destroy(this.gameObject, 0.4f);
     }
 
@@ -50,7 +52,7 @@ public class BowSkill_01_Arrow : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if (enemy)
         {
-            enemy.TakeDamage(10, false);
+            enemy.TakeDamage(SkillDamage, false);
             enemy.Stun();
             Instantiate(effect, this.transform.position + Vector3.up, Quaternion.identity);
             Destroy(this.gameObject);

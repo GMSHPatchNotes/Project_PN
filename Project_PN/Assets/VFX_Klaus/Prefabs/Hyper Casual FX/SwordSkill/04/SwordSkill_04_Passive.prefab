@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7276749470285950496}
   - component: {fileID: 8651805257080850787}
   - component: {fileID: 4560332893578685028}
+  - component: {fileID: 3152609486780637174}
   m_Layer: 0
   m_Name: SwordSkill_04_Passive
   m_TagString: Untagged
@@ -5152,6 +5153,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkCon: {fileID: 0}
   MousePos: {x: 0, y: 0, z: 0}
+--- !u!135 &3152609486780637174
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276749470285950497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.05
+  m_Center: {x: -0.0005624294, y: 1.0571055, z: -0.17709684}
 --- !u!1001 &7276749470180149163
 PrefabInstance:
   m_ObjectHideFlags: 0

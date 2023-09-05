@@ -7,7 +7,7 @@ public class WandSkill_01 : MonoBehaviour
 {
     SkillInfoInterface info;
 
-    int SkillDamage = 20;
+    int SkillDamage;
 
     bool cool = false;
 
@@ -18,8 +18,16 @@ public class WandSkill_01 : MonoBehaviour
         info.MousePos = info.atkCon.movement.AttackClick(true);
         this.transform.rotation = info.atkCon.player.transform.rotation;
         this.transform.position = info.atkCon.transform.position + info.atkCon.player.transform.forward + Vector3.up * 1.5f;
-        Destroy(this.gameObject, 6f);
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ap;
+        Invoke("End", 6f);
+        PlayerMovement.SkillUsing = false;
 
+    }
+
+    void End()
+    {
+        
+        Destroy(this.gameObject);
     }
 
     private void Update()

@@ -16,11 +16,15 @@ public class SwordSkill_03 : MonoBehaviour
         transform.position = Info.atkCon.transform.position + Info.atkCon.player.transform.forward * 3f;
         //Info.atkCon.player.transform.LookAt(Info.MousePos);
         Info.atkCon.anim.CrossFade("Attack02", 0.1f);
-        Destroy(this.gameObject,0.5f);
+        Invoke("End", 0.5f);
 
     }
 
-    
+    void End()
+    {
+        PlayerMovement.SkillUsing = false;
+        Destroy(this.gameObject);
+    }
     void Update()
     {
         

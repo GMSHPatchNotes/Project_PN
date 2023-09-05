@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.UI;
 
 enum AttackState
 {
@@ -43,11 +44,21 @@ public class PlayerAttackControl : MonoBehaviour
     [Header("Attack Trace")]
     [SerializeField] private GameObject MeleeAtackLoop;
 
+    [Header("CoolTime Image")]
+    [SerializeField] Image CoolTime_Img;
+
+    [SerializeField] Text CoolTime_Text;
     public PlayerMovement movement;
 
     public static Action<uint,int> lifeSteal;
 
     public static Action StackAttacking;
+
+    public bool isCoolTime;
+
+    private float coolTime_timing;
+
+    uint currentWeapon;
 
     [Header("Stack Attack")]
     [SerializeField] GameObject StackExplosion;
@@ -84,7 +95,18 @@ public class PlayerAttackControl : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"Stack : {PlayerAttackControl.AttackStack}");
+        Debug.Log("Skill Using : " + PlayerMovement.SkillUsing);
+        if(!isCoolTime)
+        {
+            coolTime_timing -= Time.deltaTime;
+            CoolTime_Text.text = coolTime_timing.ToString("F1");
+            CoolTime_Img.fillAmount = coolTime_timing / SkillDataManager.LoadData(InventoryManager.slot1_id).cooltime;
+        }
+        else
+        {
+            CoolTime_Text.text = "";
+            CoolTime_Img.fillAmount = 0;
+        }
     }
     public void LifeSteal(uint itemID, int StealPercentage)
     {
@@ -110,16 +132,40 @@ public class PlayerAttackControl : MonoBehaviour
             SelectAttack();
         }
     }
-
+ 
     
     public void Skill()
     {
-        GameObject skill = Instantiate(Skills[8]);
-        var info = skill.GetComponent<SkillInfoInterface>();
-        info.atkCon = this;
+        if(InventoryManager.slot1_id != 0 && isCoolTime)
+        {
+            PlayerMovement.SkillUsing = true;
+            GameObject skill;
+            if(InventoryManager.slot1_id != 301)
+            {
+                isCoolTime = false;
+                coolTime_timing = SkillDataManager.LoadData(InventoryManager.slot1_id).cooltime;
+                Invoke("CoolEnd", SkillDataManager.LoadData(InventoryManager.slot1_id).cooltime);
+                Debug.Log(Skills[SkillDataManager.LoadData(InventoryManager.slot1_id).arrNum]);
+                skill = Instantiate(Skills[SkillDataManager.LoadData(InventoryManager.slot1_id).arrNum]);
+                var info = skill.GetComponent<SkillInfoInterface>();
+                info.atkCon = this;
+                if (InventoryManager.slot1_id < 304)
+                {
+                    skill.transform.SetParent(transform, false);
+                }
+            }
+  
+            
+        }
+        
+    }
+    void CoolEnd()
+    {
+        isCoolTime = true;
+        Debug.Log("cancel");
     }
 
-    public void WeaponSwitch(int itemid)
+    public void WeaponSwitch(uint itemid)
     {
         for (int i = 0; i < Swords.Length; i++) 
         {
@@ -147,7 +193,7 @@ public class PlayerAttackControl : MonoBehaviour
             battlestate = weapon.Wand;
         }
 
-        int id = (itemid % 100) - 1;
+        uint id = (itemid % 100) - 1;
 
         switch (battlestate)
         {
@@ -155,16 +201,22 @@ public class PlayerAttackControl : MonoBehaviour
                 Swords[id].SetActive(true);
                 arrow.SetActive(false);
                 anim.runtimeAnimatorController = AOC_Sword;
+                CancelInvoke("CoolEnd");
+                isCoolTime = true;
                 break;
             case weapon.Bow:
                 Bows[id].SetActive(true);
                 arrow.SetActive(true);
                 anim.runtimeAnimatorController = AOC_Bow;
+                CancelInvoke("CoolEnd");
+                isCoolTime = true;
                 break;
             case weapon.Wand:
                 Wands[id].SetActive(true);
                 arrow.SetActive(false);
                 anim.runtimeAnimatorController = AOC_Wand;
+                CancelInvoke("CoolEnd");
+                isCoolTime = true;
                 break;
             default:
                 break;
@@ -210,18 +262,20 @@ public class PlayerAttackControl : MonoBehaviour
                 state = AttackState.Combo03;
                 break; 
             case AttackState.Combo03:
-                if(InventoryManager.slot1_id == 305)
-                {
-                    TripleShot();
-                }
+                
                 
                 if (canCombo == true)
                 {
+                    
                     canCombo = false;
                     isAttacking = false;
                 }
                 isAttacking = false;
                 anim.CrossFade("Attack03", 0.01f);
+                if (InventoryManager.slot1_id == 305)
+                {
+                    TripleShot();
+                }
                 if (battlestate == weapon.Bow)
                 {
                     Bowanim.CrossFade("Attack02", 0.02f);

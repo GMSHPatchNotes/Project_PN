@@ -47,6 +47,7 @@ public class WandSkill_02 : MonoBehaviour
     void EndSkill()
     {
         cool = false;
+        PlayerMovement.SkillUsing = false;
         Destroy(this.gameObject, 0.4f);
     }
 

@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class WandSkill_04_02 : MonoBehaviour
 {
+    int SkillDamage;
     void Start()
     {
-        Destroy(this.gameObject, 0.4f);
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ap;
+        Invoke("End", 0.4f);
+    }
+    
+    void End()
+    {
+        PlayerMovement.SkillUsing = false;
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +22,7 @@ public class WandSkill_04_02 : MonoBehaviour
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
         if(enemy)
         {
-            enemy.TakeDamage(100,false);
+            enemy.TakeDamage(SkillDamage,false);
         }
     }
 }

@@ -55,6 +55,7 @@ public class W_Slot3 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         ResetText();
         IDLoad();
         ItemImage = GetComponentInChildren<Image>();
+        DataReload();
     }
 
     // Update is called once per frame

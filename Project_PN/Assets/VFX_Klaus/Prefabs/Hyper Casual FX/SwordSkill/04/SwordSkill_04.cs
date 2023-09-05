@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordSkill_04 : MonoBehaviour
 {
 
-    int SkillDamage = 20;
+    int SkillDamage;
 
     bool cool = false;
     SkillInfoInterface Info;
@@ -18,10 +18,15 @@ public class SwordSkill_04 : MonoBehaviour
         transform.position = Info.atkCon.transform.position + Info.atkCon.player.transform.forward * 3f;
         //Info.atkCon.player.transform.LookAt(Info.MousePos);
         Info.atkCon.anim.CrossFade("Attack02", 0.1f);
-        Destroy(this.gameObject, 5f);
-
+        SkillDamage = (int)ItemDataManager.LoadData(InventoryManager.slot1_id).ad;
+        Invoke("End", 5f);
     }
 
+    void End()
+    {
+        PlayerMovement.SkillUsing = false;
+        Destroy(this.gameObject);
+    }
 
     void Update()
     {
